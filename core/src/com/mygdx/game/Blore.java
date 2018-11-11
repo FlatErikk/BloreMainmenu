@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class Blore extends ApplicationAdapter {
+public class Blore extends Game {
 	
 
 	private Viewport viewport;
@@ -34,33 +35,38 @@ public class Blore extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		Assets.load();
 
-		Gdx.graphics.setWindowedMode(Assets.screenWidth,
-				Assets.screenHeight);
+		this.setScreen(new MainMenu(this));
 
-		createAtlas();
-		createSkin();
-
-		setupStartMenu();
+//		Assets.load();
+//
+//		Gdx.graphics.setWindowedMode(Assets.screenWidth,
+//				Assets.screenHeight);
+//
+//		createAtlas();
+//		createSkin();
+//
+//		setupStartMenu();
 	}
 
 	@Override
 	public void render () {
 
-		viewport.update(Assets.screenWidth, 
-				Assets.screenHeight);
-		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-		camera.update();
 
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			setupStartMenu();
-		}
-
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		stage.act(Gdx.graphics.getDeltaTime());
-		stage.draw();
+		super.render();
+//		viewport.update(Assets.screenWidth,
+//				Assets.screenHeight);
+//		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+//		camera.update();
+//
+//		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+//			setupStartMenu();
+//		}
+//
+//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//
+//		stage.act(Gdx.graphics.getDeltaTime());
+//		stage.draw();
 	}
 	
 	@Override
