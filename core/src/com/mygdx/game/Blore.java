@@ -36,8 +36,8 @@ public class Blore extends ApplicationAdapter {
 	public void create () {
 		Assets.load();
 
-		Gdx.graphics.setWindowedMode(Assets.settings.getInteger("screenWidth"),
-				Assets.settings.getInteger("screenHeight"));
+		Gdx.graphics.setWindowedMode(Assets.screenWidth,
+				Assets.screenHeight);
 
 		createAtlas();
 		createSkin();
@@ -48,8 +48,8 @@ public class Blore extends ApplicationAdapter {
 	@Override
 	public void render () {
 
-		viewport.update(Assets.settings.getInteger("screenWidth"), 
-				Assets.settings.getInteger("screenHeight"));
+		viewport.update(Assets.screenWidth, 
+				Assets.screenHeight);
 		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
 		camera.update();
 
@@ -68,8 +68,8 @@ public class Blore extends ApplicationAdapter {
 	}
 
 	public void setupOptionsMenu(){
-		setupCameraAndViewport(Assets.settings.getInteger("screenWidth"),
-				Assets.settings.getInteger("screenHeight"));
+		setupCameraAndViewport(Assets.screenWidth,
+				Assets.screenHeight);
 		setupStage();
 
 		setupOpionsButtons();
@@ -83,17 +83,17 @@ public class Blore extends ApplicationAdapter {
 		backButton.setWidth(200);
 		backButton.setHeight(80);
 		backButton.setTransform(true);
-		backButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		backButton.setScale((float)Assets.screenWidth/1920);
 		backButton.setPosition(Gdx.graphics.getWidth()/2 - ((backButton.getWidth() * backButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((backButton.getHeight() * backButton.getScaleY())/2) - 
-						(Assets.settings.getInteger("screenHeight")/10)*4);
+						(Assets.screenHeight/10)*4);
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 
 				Assets.settings.putFloat("sound", Assets.sound);
-//				Assets.settings.putInteger("screenWidth", Assets.settings.getInteger("screenWidth"));
-//				Assets.settings.putInteger("screenHeight", Assets.settings.getInteger("screenHeight"));
+				Assets.settings.putInteger("screenWidth", Assets.screenWidth);
+				Assets.settings.putInteger("screenHeight", Assets.screenHeight);
 				Assets.settings.flush();
 				stage.dispose();
 				setupStartMenu();
@@ -105,22 +105,22 @@ public class Blore extends ApplicationAdapter {
 		soundButton.setWidth(200);
 		soundButton.setHeight(80);
 		soundButton.setTransform(true);
-		soundButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		soundButton.setScale((float)Assets.screenWidth/1920);
 		soundButton.setPosition(Gdx.graphics.getWidth()/2 - ((soundButton.getWidth() * soundButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((soundButton.getHeight() * soundButton.getScaleY())/2) - 
-						(Assets.settings.getInteger("screenHeight")/10));
+						(Assets.screenHeight/10));
 
 		//position aligned to soundButton
 		soundMinus = new Button(skin, "minus");
 		soundMinus.setWidth(64);
 		soundMinus.setHeight(64);
 		soundMinus.setTransform(true);
-		soundMinus.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		soundMinus.setScale((float)Assets.screenWidth/1920);
 		soundMinus.setPosition(Gdx.graphics.getWidth()/2 - ((soundButton.getWidth() * soundButton.getScaleX())/2) - 
-						(Assets.settings.getInteger("screenWidth")/10)*0.5f -
+						(Assets.screenWidth/10)*0.5f -
 								((soundMinus.getWidth() * soundMinus.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((soundMinus.getHeight() * soundMinus.getScaleY())/2) - 
-						(Assets.settings.getInteger("screenHeight")/10));
+						(Assets.screenHeight/10));
 		soundMinus.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -137,12 +137,12 @@ public class Blore extends ApplicationAdapter {
 		soundPlus.setWidth(64);
 		soundPlus.setHeight(64);
 		soundPlus.setTransform(true);
-		soundPlus.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		soundPlus.setScale((float)Assets.screenWidth/1920);
 		soundPlus.setPosition(Gdx.graphics.getWidth()/2 + ((soundButton.getWidth() * soundButton.getScaleX())/2) + 
-						(Assets.settings.getInteger("screenWidth")/10)*0.5f -
+						(Assets.screenWidth/10)*0.5f -
 								((soundPlus.getWidth() * soundPlus.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((soundPlus.getHeight() * soundPlus.getScaleY())/2) - 
-						(Assets.settings.getInteger("screenHeight")/10));
+						(Assets.screenHeight/10));
 		soundPlus.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -154,34 +154,38 @@ public class Blore extends ApplicationAdapter {
 			}
 		});
 
-		resolutionButton = new TextButton(String.valueOf(Assets.settings.getInteger("screenWidth")) + " x " + 
-				String.valueOf(Assets.settings.getInteger("screenHeight")), skin, "default");
+		resolutionButton = new TextButton(String.valueOf(Assets.screenWidth) + " x " + 
+				String.valueOf(Assets.screenHeight), skin, "default");
 		resolutionButton.setWidth(200);
 		resolutionButton.setHeight(80);
 		resolutionButton.setTransform(true);
-		resolutionButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		resolutionButton.setScale((float)Assets.screenWidth/1920);
 		resolutionButton.setPosition(Gdx.graphics.getWidth()/2 - 
 						((resolutionButton.getWidth() * resolutionButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((resolutionButton.getHeight() * resolutionButton.getScaleY())/2) + 
-						Assets.settings.getInteger("screenHeight")/10);
+						Assets.screenHeight/10);
 		resolutionButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				if(Assets.settings.getInteger("screenWidth") == 1280){
+				if(Assets.screenWidth == 1280){
+					Assets.screenWidth = 1920;
+					Assets.screenHeight = 1080;
 					Assets.settings.putInteger("screenWidth", 1920);
 					Assets.settings.putInteger("screenHeight",1080);
 				}else {
+					Assets.screenWidth = 1280;
+					Assets.screenHeight = 720;
 					Assets.settings.putInteger("screenWidth", 1280);
 					Assets.settings.putInteger("screenHeight",720);
 				}
-				Assets.settings.putInteger("screenWidth", Assets.settings.getInteger("screenWidth"));
-				Assets.settings.putInteger("screenHeight", Assets.settings.getInteger("screenHeight"));
+				Assets.settings.putInteger("screenWidth", Assets.screenWidth);
+				Assets.settings.putInteger("screenHeight", Assets.screenHeight);
 
 
-				Gdx.graphics.setWindowedMode(Assets.settings.getInteger("screenWidth"),
-						Assets.settings.getInteger("screenHeight"));
-				resolutionButton.setText(String.valueOf(Assets.settings.getInteger("screenWidth")) + " x " + 
-						String.valueOf(Assets.settings.getInteger("screenHeight")));
+				Gdx.graphics.setWindowedMode(Assets.screenWidth,
+						Assets.screenHeight);
+				resolutionButton.setText(String.valueOf(Assets.screenWidth) + " x " + 
+						String.valueOf(Assets.screenHeight));
 
 				stage.dispose();
 				setupOptionsMenu();
@@ -200,8 +204,8 @@ public class Blore extends ApplicationAdapter {
 	}
 	
 	public void setupStartMenu(){
-		setupCameraAndViewport(Assets.settings.getInteger("screenWidth"),
-				Assets.settings.getInteger("screenHeight"));
+		setupCameraAndViewport(Assets.screenWidth,
+				Assets.screenHeight);
 		setupStage();
 
 		setupStartButtons();
@@ -215,10 +219,10 @@ public class Blore extends ApplicationAdapter {
 		startButton.setWidth(200);
 		startButton.setHeight(80);
 		startButton.setTransform(true);
-		startButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		startButton.setScale((float)Assets.screenWidth/1920);
 		startButton.setPosition(Gdx.graphics.getWidth()/2 - ((startButton.getWidth() * startButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((startButton.getHeight() * startButton.getScaleY())/2) +
-						Assets.settings.getInteger("screenHeight")/10);
+						Assets.screenHeight/10);
 		startButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -231,7 +235,7 @@ public class Blore extends ApplicationAdapter {
 		optionsButton.setWidth(200);
 		optionsButton.setHeight(80);
 		optionsButton.setTransform(true);
-		optionsButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		optionsButton.setScale((float)Assets.screenWidth/1920);
 		optionsButton.setPosition(Gdx.graphics.getWidth()/2 - ((optionsButton.getWidth() *
 						optionsButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((optionsButton.getHeight() * optionsButton.getScaleY())/2));
@@ -251,10 +255,10 @@ public class Blore extends ApplicationAdapter {
 		exitButton.setWidth(200);
 		exitButton.setHeight(80);
 		exitButton.setTransform(true);
-		exitButton.setScale((float)Assets.settings.getInteger("screenWidth")/1920);
+		exitButton.setScale((float)Assets.screenWidth/1920);
 		exitButton.setPosition(Gdx.graphics.getWidth()/2 - ((exitButton.getWidth() * exitButton.getScaleX())/2),
 				Gdx.graphics.getHeight()/2 - ((exitButton.getHeight() * exitButton.getScaleY())/2) -
-						Assets.settings.getInteger("screenHeight")/10);
+						Assets.screenHeight/10);
 		exitButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
