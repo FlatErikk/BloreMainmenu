@@ -1,0 +1,83 @@
+
+menuButtons.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
++_menubutton
+  rotate: false
+  xy: 128, 64
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+-_menubutton
+  rotate: false
+  xy: 96, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+X_menubutton
+  rotate: false
+  xy: 96, 32
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+down-arrow_menubutton
+  rotate: false
+  xy: 192, 96
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+left-arrow_menubutton
+  rotate: false
+  xy: 96, 64
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+right-arrow_menubutton
+  rotate: false
+  xy: 224, 96
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+square_flat_menuslider
+  rotate: false
+  xy: 96, 96
+  size: 96, 32
+  orig: 96, 32
+  offset: 0, 0
+  index: -1
+square_flat_menuslider_hover
+  rotate: false
+  xy: 0, 0
+  size: 96, 32
+  orig: 96, 32
+  offset: 0, 0
+  index: -1
+square_menuslider
+  rotate: false
+  xy: 0, 32
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+up-arrow_menubutton
+  rotate: false
+  xy: 128, 32
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 129, 31
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1

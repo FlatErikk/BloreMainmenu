@@ -1,0 +1,30 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: { asgard: { file: asgard.fnt } },
+com.badlogic.gdx.graphics.Color: {
+	green: { a: 1, b: 0, g: 1, r: 0 },
+	white: { a: 1, b: 1, g: 1, r: 1 },
+	red: { a: 1, b: 0, g: 0, r: 1 },
+	black: { a: 1, b: 0, g: 0, r: 0 },
+},
+com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } },
+},
+com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+	up: { up: up-arrow_menubutton, pressedOffsetX: 1, pressedOffsetY: 1},
+	down: { up: down-arrow_menubutton }
+	left: { up: left-arrow_menubutton, pressedOffsetX: 1, pressedOffsetY: 100, over: right-arrow_menubutton }
+	right: { up: right-arrow_menubutton }
+	cross: { up: X_menubutton }
+	minus: { up: -_menubutton }
+	plus: { up: +_menubutton }
+},
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	//over == hover
+	default: { up: square_flat_menuslider, font: asgard, fontColor: white , over: square_flat_menuslider_hover},
+	toggle: { checked: square_flat_menuslider , downFontColor: red , font: asgard, fontColor: white }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+	default: { titleFont: asgard, background: square_menuslider, titleFontColor: white },
+	dialog: { stageBackground: dialogDim }
+},
+}
