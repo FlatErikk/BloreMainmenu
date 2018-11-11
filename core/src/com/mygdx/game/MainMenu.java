@@ -26,7 +26,7 @@ public class MainMenu implements Screen {
     TextureRegion button_down, button_right, button_up, button_left, button_plus, button_minus,
             button_X, fieldbutton_transparent, fieldbutton_flat;
 
-    private boolean TEEEEEEEEEEEEEEEEEEEEEEEEEST;
+    private boolean TEEEEEEEEEEEEEEEEEEEEEEEST;
 
     Skin skin;
     Stage stage;
